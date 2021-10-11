@@ -1,13 +1,13 @@
-PR_number,repo,commment,user,created_at,PR_author
+PR_number,repo,commment,user,created_at,PR_author,
 ant1,ant,"Resolve long path problem when starting antrun.py on Windows 7
 os.system is bad idea to use
-",vit1251,9/2/14,vit1251
+",vit1251,9/2/14,vit1251,filtered
 ant1,ant,"I'm not familiar with how Python works on Windows at all, so please bear with me.  How does stripping quotes and explicitly adding them later help with long path?
 
 Also I don't get the os.system comment - at least you didn't change any usage of os.system.
 
 The script's author-header is another issue, we've removed all author notes as a policy from Ant's code base but obviously missed this one.
-",bodewig,11/17/14,vit1252
+",bodewig,11/17/14,vit1251,FALSE
 ant1,ant,"Magic here:
 
 -cmdline = ('%s %s -classpath %s -Dant.home=%s %s ' + \
@@ -19,24 +19,24 @@ ant1,ant,"Magic here:
 When JAVACMD is ""C:/Program Files/Java/jre_1_7_55555/bin/java.exe"" os.system is call execute file""C:/Program"" but tht file is not found and it require quota.
 
 I in my suggested patch add that quota but not tested in unix/linux ;)
-",vit1251,11/18/14,vit1253
+",vit1251,11/18/14,vit1251,filtered
 ant1,ant,"OK, I think I get that.  So it is not as much about long paths but rather paths with spaces in them.
-",bodewig,11/18/14,vit1254
+",bodewig,11/18/14,vit1251,FALSE
 ant1,ant,"I've taken the liberty and only committed the subset actually related to the path changes.
-",bodewig,11/6/15,vit1255
+",bodewig,11/6/15,vit1251,FALSE
 aries109,aries,"https://issues.apache.org/jira/browse/ARIES-1988
 
-I created this pull request to highlight the new comments.",ackelcn,6/24/20,ackelcn
-aries109,aries,Why should that be a good idea? You can look in github which lines were changed by which commit. Adding comments everywhere is like commenting every single line of code. ,cschneider,6/24/20,ackelcn
-aries109,aries,"I agree with @cschneider not sure it's worth to add bunch of comments and ""noise"". -1 about this PR.",jbonofre,6/24/20,ackelcn
+I created this pull request to highlight the new comments.",ackelcn,6/24/20,ackelcn,filtered
+aries109,aries,Why should that be a good idea? You can look in github which lines were changed by which commit. Adding comments everywhere is like commenting every single line of code. ,cschneider,6/24/20,ackelcn,FALSE
+aries109,aries,"I agree with @cschneider not sure it's worth to add bunch of comments and ""noise"". -1 about this PR.",jbonofre,6/24/20,ackelcn,FALSE
 aries109,aries,"Indeed, my tool does not comment every line. It comments only those snippets that can be traced to a specifc commit. The comments link the code lines to issue reports, and shall be useful to understand code. 
-I agree that some comments may describe too simple code lines, but shall we still accept comments on those complicated ones?",ackelcn,6/24/20,ackelcn
-aries109,aries,"@ackelcn I know some people like this kind of tools, some don't so I wonder if you shouldn't push your tool to the next step and make it an intellij (or eclipse) plugin (a bit like ""annotate""/""blame"" features) which would preppend/append the issue as a link to the commit - extracting the issue from the commit. It would make everyone happy and would make the usage more straight forward IMHO.",rmannibucau,6/24/20,ackelcn
-aries109,aries,It totally agree with Romain. Instead of adding the comments to the code you could add them on the fly while viewing the code. Apart from eclipse and idea plugins you could also create a github plugin. ,cschneider,6/24/20,ackelcn
-aries109,aries,"Perhaps, instead of writting them in code comments, my tool shall store links and highlight the corresponding commits, when a programmers is interesting in a specific code line? So, shall my tool works like this? When you click a code line, it then presents a window to show the issue reports and commits.",ackelcn,6/24/20,ackelcn
+I agree that some comments may describe too simple code lines, but shall we still accept comments on those complicated ones?",ackelcn,6/24/20,ackelcn,filtered
+aries109,aries,"@ackelcn I know some people like this kind of tools, some don't so I wonder if you shouldn't push your tool to the next step and make it an intellij (or eclipse) plugin (a bit like ""annotate""/""blame"" features) which would preppend/append the issue as a link to the commit - extracting the issue from the commit. It would make everyone happy and would make the usage more straight forward IMHO.",rmannibucau,6/24/20,ackelcn,FALSE
+aries109,aries,It totally agree with Romain. Instead of adding the comments to the code you could add them on the fly while viewing the code. Apart from eclipse and idea plugins you could also create a github plugin. ,cschneider,6/24/20,ackelcn,FALSE
+aries109,aries,"Perhaps, instead of writting them in code comments, my tool shall store links and highlight the corresponding commits, when a programmers is interesting in a specific code line? So, shall my tool works like this? When you click a code line, it then presents a window to show the issue reports and commits.",ackelcn,6/24/20,ackelcn,filtered
 aries109,aries,"Have to admit i'm not an user of that but if not already supported jira plugin (https://plugins.jetbrains.com/plugin/11169-jira-integration) sounds like a good way to get that feature quite smoothly. Will likely need some context menu/annotate integration but it has already all you need to make it smooth.
 
-Just my 2cts indeed",rmannibucau,6/24/20,ackelcn
+Just my 2cts indeed",rmannibucau,6/24/20,ackelcn,FALSE
 aries109,aries,"`When you click a code line, it then presents a window to show the issue reports and commits.`
 
 Yes. It could work like this.
@@ -47,25 +47,25 @@ I think it is like with comments in general. You put them were you think that ad
 
 Jiras can be used to track and explain the requirements. So sometimes links to them make sense. Unfortunately they do not track the changes over time. So possibly a jira represents a requirement at some point in time but later the requirement might have vanished or changed. The old jira issue will not reflect this. So adding the link is easy and can be automated as you demonstrate with your tool. Managing the link over time is much harder. 
 
-This is why I think adding the links on the fly while viewing from the blame feature is better. When the code is changed because of changed requirements then the on the fly tool will automatically change to the new jiras. ",cschneider,6/24/20,ackelcn
+This is why I think adding the links on the fly while viewing from the blame feature is better. When the code is changed because of changed requirements then the on the fly tool will automatically change to the new jiras. ",cschneider,6/24/20,ackelcn,FALSE
 aries109,aries,"Hi, cschneider, I agree with you that comments can become out-of-date, but my comments are automatically geneated.  It shall be easy to totally remove my generated comments, and re-generate them to keep them up-to-date. Perhaps, I shall find a better way to manage manual comments and my generated comments. It can be a better way to present automatic comments when there is no manual comment and programmers do some comments. Here, they can click a bottom, and my tool show its generated comments. 
 
-I also agree with you that some issue reports can be invalid. When I implement my tool, I found some cases where the changes of an issue report are totally rewritten by follow-up changes. Are those issue reports one type of your mentioned invalid JIRA issues? Is a tool useful, if that tool can find those invalid issue reports for you?  ",ackelcn,6/24/20,ackelcn
+I also agree with you that some issue reports can be invalid. When I implement my tool, I found some cases where the changes of an issue report are totally rewritten by follow-up changes. Are those issue reports one type of your mentioned invalid JIRA issues? Is a tool useful, if that tool can find those invalid issue reports for you?  ",ackelcn,6/24/20,ackelcn,filtered
 aries109,aries,"I think the idea of adding the links to jira isssues in the code is flawed. Instead add them while viewing. Basically it is simply an improved ""blame"" view.
 
 The blame view also kind of automates that issues are not linked anymore when all their code lines are replaced by newer commits. So I think this can sort itself out automatically in most cases.
 
-Jira is simply not meant to be a good requirements tool. So I think it is normal that older jira issues might not represent the current requirements anymore.",cschneider,6/24/20,ackelcn
+Jira is simply not meant to be a good requirements tool. So I think it is normal that older jira issues might not represent the current requirements anymore.",cschneider,6/24/20,ackelcn,FALSE
 aries109,aries,"I agree with @cschneider so since we've had not other feedback on this for a long time lets close it.
 
-However, we do appreciate the contribution and interest :)",rotty3000,4/4/21,ackelcn
+However, we do appreciate the contribution and interest :)",rotty3000,4/4/21,ackelcn,FALSE
 cassandra10,cassandra,"It's fix for https://issues.apache.org/jira/browse/CASSANDRA-3741.
 The problem there is that when ColumnFamily got all columns deleted, the size() method returns 0 despite the fact that actual object size is at least 40 bytes. 
 It affects calculations of whole Memtable size. In my case I deleted millions of columns and Cassandra didn't calculate Memtable size correctly, and didn't flush it. It caused OOM crash of DB.
-",akolyadenko,5/3/12,akolyadenko
+",akolyadenko,5/3/12,akolyadenko,filtered
 cassandra10,cassandra,"Requested to close all open pull requests by Cassandra PMC
-",jfarrell,5/8/14,akolyadenko
-groovy10,groovy,,fpavageau,5/10/15,fpavageau
+",jfarrell,5/8/14,akolyadenko,FALSE
+groovy10,groovy,,fpavageau,5/10/15,fpavageau,filtered
 groovy10,groovy,"A trick we use to be able to add such tests into the build is to use `notYetImplemented` which is an available method in your test class, e.g. add the following as the first line of your test:
 
 ```
@@ -73,18 +73,18 @@ if (notYetImplemented()) return
 ```
 
 Also, you might like to update the comment header from one of the other recent Groovy source files - we are getting ready to release under Apache guidelines and have tweaked the wording slightly.
-",paulk-asert,5/19/15,fpavageau
+",paulk-asert,5/19/15,fpavageau,FALSE
 groovy10,groovy,"Thanks Paul, I've updated the license in the header and added the `notYetImplemented()` call to the (otherwise failing) method.
-",fpavageau,5/19/15,fpavageau
+",fpavageau,5/19/15,fpavageau,filtered
 groovy10,groovy,"@paulk-asert I guess it's functionally equivalent, but even easier/more obvious to annotate the test method with @NotYetImplemented (http://docs.groovy-lang.org/latest/html/gapi/groovy/transform/NotYetImplemented.html)?
-",PascalSchumacher,5/19/15,fpavageau
+",PascalSchumacher,5/19/15,fpavageau,FALSE
 groovy10,groovy,"I like that, I've pushed the modified version.
-",fpavageau,5/19/15,fpavageau
+",fpavageau,5/19/15,fpavageau,filtered
 groovy10,groovy,"Yep, that's good too. I tend to always use the annotation version with my JUnit 4 tests but often use the old version with my JUnit 3 style tests - but maybe that's just out of habit. Using the annotation is good in that case too.
-",paulk-asert,5/19/15,fpavageau
+",paulk-asert,5/19/15,fpavageau,FALSE
 groovy10,groovy,"Thanks!
-",PascalSchumacher,5/21/15,fpavageau
-subversion18,subversion,Primarily an accessibility concern for screen reader software.,skotfred,1/23/19,skotfred
+",PascalSchumacher,5/21/15,fpavageau,FALSE
+subversion18,subversion,Primarily an accessibility concern for screen reader software.,skotfred,1/23/19,skotfred,filtered
 subversion18,subversion,"Hello. Thanks for offering a contribution to the Subversion project. Unfortunately, we looked at your patch and it seems that the changes themselves are mostly irrelevant, and those that add the ""lang"" attribute where it's not allowed by the DTD are actually wrong.
 
 We encourage contributors to start at these pages:
@@ -95,17 +95,30 @@ We encourage contributors to start at these pages:
 If you write to the mailing list, as described there, then we can help you come up with a correct fix for any problems you are seeing.
 
 Thanks,
-- Julian",julianfoad,1/24/19,skotfred
+- Julian",julianfoad,1/24/19,skotfred,FALSE
 subversion18,subversion,"The HTML 5 standard (As hosted on w3.org) explicitly allows the lang attribute on each element, including '<html>'. See https://www.w3.org/TR/html52/dom.html#the-lang-and-xmllang-attributes
 
-I'm not sure which DTD is refered to as 'the standard', but it is most likely targeting an outdated HTML version.",rhuijben,2/18/19,skotfred
-wicket101,"wicket
-",tkruse,tkruse,2/25/15,tkruse
-wicket101,"wicket
-",svenmeier,svenmeier,2/25/15,tkruse
-wicket101,"wicket
-",klopfdreh,klopfdreh,2/26/15,tkruse
-wicket101,"wicket
-",martin-g,martin-g,3/12/15,tkruse
-wicket101,"wicket
-",tkruse,tkruse,3/12/15,tkruse
+I'm not sure which DTD is refered to as 'the standard', but it is most likely targeting an outdated HTML version.",rhuijben,2/18/19,skotfred,FALSE
+jena100,"jena
+","To help navigate tests, this is a reorganisation of the tests created for JENA-624 into the same naming style and organization as the other tests in ARQ.  The main reason for reorganizing is so that there is one style, not that one is better than another.
+- Files with tests are `Test*` (Junit3 legacy naming!)
+- Test frameworks using abstract classes are `AbstractTest*`
+- Files `TS_` for test suites, usually `@RunWith(Suite.class)`
+- Each `TS_*` is in a test collection file - `TC_General` in this case.
+",afs,11/18/15,afs,filtered
+jena100,"jena
+","I'm totally cool with this renaming, of course. I did want to ask about tests for the Assembler system-- I didn't see any, when I came to write the ones for my little addition to that system. Did I miss them or are they not there? Also, the same goes for the `LockMRPlusSW` I wrote-- I didn't see any tests for the other locks impls. Should I file a ticket to remind us to write those with all the copious spare time we have :) , or did I just miss them?
+",ajs6f,11/18/15,afs,FALSE
+jena100,"jena
+","IIRC `LockMRSW` gets tested with `TestConcurrency` and when used with `TestDatasetGraphWithLock`.
+",afs,11/18/15,afs,filtered
+jena100,"jena
+","And the various `Assembler` subtypes?
+",ajs6f,11/19/15,afs,FALSE
+jena100,"jena
+","Most Assemblers are tested in jena-core.  Probably weak-to-nonexistent for dataset assemblers directly - Fuseki uses them of course.
+
+I have now tested all combinations of quad patterns (see last nights commit). Getting the tests organised and made useable is proving messy/tricky and taking longer than I hoped. I'll commit what I have in and then they can be improved on.
+
+Sort of want open parametrization on suites of tests all at the same time - usual wanting two dimensions when each framework (in this case ""Runner"") is one at a time. Or multiple inheritance so maybe interface mixins will work - the data is static - then one method can satisfy the get empty dataset"" operation from several mixins.  Dynamic generation requires writing a Runner in Junit4 (?? - it was easier in Junit3).
+",afs,11/19/15,afs,filtered

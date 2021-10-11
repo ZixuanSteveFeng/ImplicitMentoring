@@ -1,0 +1,71 @@
+PR_number,repo,comment,user,origin_mentoring
+ant1,ant,"I'm not familiar with how Python works on Windows at all, so please bear with me.  How does stripping quotes and explicitly adding them later help with long path?
+
+Also I don't get the os.system comment - at least you didn't change any usage of os.system.
+
+The script's author-header is another issue, we've removed all author notes as a policy from Ant's code base but obviously missed this one.
+",bodewig,Y
+ant1,ant,"OK, I think I get that.  So it is not as much about long paths but rather paths with spaces in them.
+",bodewig,Y
+ant1,ant,"I've taken the liberty and only committed the subset actually related to the path changes.
+",bodewig,N
+aries109,aries,Why should that be a good idea? You can look in github which lines were changed by which commit. Adding comments everywhere is like commenting every single line of code. ,cschneider,Y
+aries109,aries,"I agree with @cschneider not sure it's worth to add bunch of comments and ""noise"". -1 about this PR.",jbonofre,N
+aries109,aries,"@ackelcn I know some people like this kind of tools, some don't so I wonder if you shouldn't push your tool to the next step and make it an intellij (or eclipse) plugin (a bit like ""annotate""/""blame"" features) which would preppend/append the issue as a link to the commit - extracting the issue from the commit. It would make everyone happy and would make the usage more straight forward IMHO.",rmannibucau,Y
+aries109,aries,It totally agree with Romain. Instead of adding the comments to the code you could add them on the fly while viewing the code. Apart from eclipse and idea plugins you could also create a github plugin. ,cschneider,Y
+aries109,aries,"Have to admit i'm not an user of that but if not already supported jira plugin (https://plugins.jetbrains.com/plugin/11169-jira-integration) sounds like a good way to get that feature quite smoothly. Will likely need some context menu/annotate integration but it has already all you need to make it smooth.
+
+Just my 2cts indeed",rmannibucau,Y
+aries109,aries,"`When you click a code line, it then presents a window to show the issue reports and commits.`
+
+Yes. It could work like this.
+
+`I agree that some comments may describe too simple code lines, but shall we still accept comments on those complicated ones?`
+
+I think it is like with comments in general. You put them were you think that additional explanations are required to understand the code.  At the same time every comment is a liability. Comments tend to rott as they are not tested by junit. So over time a comment might describe something that is not matching the changed code anymore at all. This is why I favour improving the code instead of adding many comments. 
+
+Jiras can be used to track and explain the requirements. So sometimes links to them make sense. Unfortunately they do not track the changes over time. So possibly a jira represents a requirement at some point in time but later the requirement might have vanished or changed. The old jira issue will not reflect this. So adding the link is easy and can be automated as you demonstrate with your tool. Managing the link over time is much harder. 
+
+This is why I think adding the links on the fly while viewing from the blame feature is better. When the code is changed because of changed requirements then the on the fly tool will automatically change to the new jiras. ",cschneider,Y
+aries109,aries,"I think the idea of adding the links to jira isssues in the code is flawed. Instead add them while viewing. Basically it is simply an improved ""blame"" view.
+
+The blame view also kind of automates that issues are not linked anymore when all their code lines are replaced by newer commits. So I think this can sort itself out automatically in most cases.
+
+Jira is simply not meant to be a good requirements tool. So I think it is normal that older jira issues might not represent the current requirements anymore.",cschneider,Y
+aries109,aries,"I agree with @cschneider so since we've had not other feedback on this for a long time lets close it.
+
+However, we do appreciate the contribution and interest :)",rotty3000,Y
+cassandra10,cassandra,"Requested to close all open pull requests by Cassandra PMC
+",jfarrell,N
+groovy10,groovy,"A trick we use to be able to add such tests into the build is to use `notYetImplemented` which is an available method in your test class, e.g. add the following as the first line of your test:
+
+```
+if (notYetImplemented()) return
+```
+
+Also, you might like to update the comment header from one of the other recent Groovy source files - we are getting ready to release under Apache guidelines and have tweaked the wording slightly.
+",paulk-asert,Y
+groovy10,groovy,"@paulk-asert I guess it's functionally equivalent, but even easier/more obvious to annotate the test method with @NotYetImplemented (http://docs.groovy-lang.org/latest/html/gapi/groovy/transform/NotYetImplemented.html)?
+",PascalSchumacher,N
+groovy10,groovy,"Yep, that's good too. I tend to always use the annotation version with my JUnit 4 tests but often use the old version with my JUnit 3 style tests - but maybe that's just out of habit. Using the annotation is good in that case too.
+",paulk-asert,Y
+groovy10,groovy,"Thanks!
+",PascalSchumacher,N
+subversion18,subversion,"Hello. Thanks for offering a contribution to the Subversion project. Unfortunately, we looked at your patch and it seems that the changes themselves are mostly irrelevant, and those that add the ""lang"" attribute where it's not allowed by the DTD are actually wrong.
+
+We encourage contributors to start at these pages:
+
+    https://subversion.apache.org/contributing.html
+    https://subversion.apache.org/reporting-issues.html
+
+If you write to the mailing list, as described there, then we can help you come up with a correct fix for any problems you are seeing.
+
+Thanks,
+- Julian",julianfoad,Y
+subversion18,subversion,"The HTML 5 standard (As hosted on w3.org) explicitly allows the lang attribute on each element, including '<html>'. See https://www.w3.org/TR/html52/dom.html#the-lang-and-xmllang-attributes
+
+I'm not sure which DTD is refered to as 'the standard', but it is most likely targeting an outdated HTML version.",rhuijben,Y
+jena100,jena,"I'm totally cool with this renaming, of course. I did want to ask about tests for the Assembler system-- I didn't see any, when I came to write the ones for my little addition to that system. Did I miss them or are they not there? Also, the same goes for the `LockMRPlusSW` I wrote-- I didn't see any tests for the other locks impls. Should I file a ticket to remind us to write those with all the copious spare time we have :) , or did I just miss them?
+",ajs6f,Y
+jena100,jena,"And the various `Assembler` subtypes?
+",ajs6f,N
