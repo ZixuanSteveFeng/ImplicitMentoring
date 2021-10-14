@@ -5,9 +5,7 @@ Yusuke,Bratton,JP,male,25.65722016,0.99,-0.986050911,LATIN,NamSorAPIv2.0.16B01,e
 Marc,Guillemot,DE,male,25.71380415,0.99,-0.986126879,LATIN,NamSorAPIv2.0.16B01,mguillem
 Adam,Retter,GB,male,22.8281536,0.99,-0.977999951,LATIN,NamSorAPIv2.0.16B01,adamretter
 Tony,Gravagno,US,male,23.04001182,0.99,-0.978857239,LATIN,NamSorAPIv2.0.16B01,TonyGravagno
-Vladislav,Bauer,RU,male,32.65785282,1.00,-0.993972157,LATIN,NamSorAPIv2.0.16B01,vbauer
+Vladislav,Bauer,RU,male,32.65785282,1,-0.993972157,LATIN,NamSorAPIv2.0.16B01,vbauer
 Simon,Legner,AT,male,23.10738808,0.99,-0.979093951,LATIN,NamSorAPIv2.0.16B01,simon04
 Vincent,Privat,FR,male,25.62883118,0.99,-0.986011138,LATIN,NamSorAPIv2.0.16B01,don-vip
-Kasia,Kucharczyk,PL,female,39.75932435,1.00,0.994959908,LATIN,NamSorAPIv2.0.16B01,kkucharc
-Clara,Lee,US,female,34.57604729,1.00,0.994809234,LATIN,NamSorAPIv2.0.16B01,wclaralee
-Etta,Newman,US,female,31.04263164,1.00,0.992811713,LATIN,NamSorAPIv2.0.16B01,ettirapp
+Kasia,Kucharczyk,PL,female,39.75932435,1,0.994959908,LATIN,NamSorAPIv2.0.16B01,kkucharc
